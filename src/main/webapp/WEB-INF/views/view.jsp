@@ -94,7 +94,7 @@ p.setShuffle(true);
 
 
 
-<button style="float:right; font-size : 60px; padding:5px" onclick="location.href='/add'" class="btn btn-light" >
+<button style="float:right; font-size : 60px; padding:5px" onclick="location.href='/myapp/add'" class="btn btn-light" >
 <i class="fa fa-plus-square-o" aria-hidden="true" ></i>
 </button>
 
