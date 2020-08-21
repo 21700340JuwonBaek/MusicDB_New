@@ -47,18 +47,42 @@ width: fit-content;
 }
 
 </style>
+
+<script>
+var doubleSubmitFlag = false;
+function doubleSubmitCheck(){
+    if(doubleSubmitFlag){
+        return doubleSubmitFlag;
+    }else{
+        doubleSubmitFlag = true;
+        return false;
+    }
+}
+
+function insert(){
+    if(doubleSubmitCheck()){ 
+        alert("잠시만 기다려주세요~");
+        return;}
+
+    alert("DB에 등록을 시작합니다");
+    document.addform.submit();
+    
+
+}
+
+</script>
 <body>
 <h1 style="font-size:50px; margin-top: 10px; margin-left:10px">백주원의 음악 DB</h1>
 
 
-<form action="/myapp/editsave" method="post">
-<!-- <form action="/editsave" method="post"> -->
+<!-- <form action="/myapp/editsave" method="post">-->
+<form action="/editsave" method="post" name="addform">
 <div class="wrapper">
 <input type="hidden" name="id" value="${music.id }">
 <div>아티스트 </div><p> <input type="text" name="artist" value="${music.artist }" ></p> <br>
 <div>제목 </div><p>  <input type="text" name="title" value="${music.title }"></p><br>
 <div>동영상 주소  </div><p><textarea name="url" rows="2" cols="23">${music.url }</textarea></p><br>
-<input type="submit" style="float:right">
+ <button type="button" style="float:right" onclick="insert()">제출</button>
 </div>
 </form>
 </body>
