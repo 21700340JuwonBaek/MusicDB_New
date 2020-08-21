@@ -103,7 +103,7 @@ public class HomeController {
 		musicService.insertMusic(music);
 		
 		model.addAttribute("list",musicService.selectMusic());
-		return "view";
+    	return "redirect:/successed";    
 
 	}
 	
