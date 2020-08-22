@@ -12,6 +12,8 @@ public class MusicDAOImp implements MusicDAO {
 	@Autowired
 	SqlSession SQLSession;
 	private static final String LISTSQL = "music.Select";
+	private static final String LISTSQLARTIST = "music.SelectArtist";
+	private static final String LISTTITLE = "music.SelectTitle";
 	private static final String INSERT = "music.Insert";
 	private static final String UPDATE = "music.Update";
 	private static final String DELETE = "music.Delete";
@@ -45,6 +47,18 @@ public class MusicDAOImp implements MusicDAO {
 		System.out.print(num+"at DAO");
 		return SQLSession.selectOne(SELECT, num);
 
+	}
+
+	@Override
+	public List<Music> selectMusicByArtist() {
+		// TODO Auto-generated method stub
+		return SQLSession.selectList(LISTSQLARTIST);
+	}
+
+	@Override
+	public List<Music> selectMusicByTitle() {
+		// TODO Auto-generated method stub
+		return SQLSession.selectList(LISTTITLE);
 	}
 
 }
