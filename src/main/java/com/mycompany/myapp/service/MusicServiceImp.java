@@ -43,4 +43,16 @@ public class MusicServiceImp implements MusicService {
 		return musicDAO.selectMusicById(num);
 	}
 
+	@Override
+	public List<Music> selectMusicByArtist() {
+		// TODO Auto-generated method stub
+		return musicDAO.selectMusicByArtist();
+	}
+
+	@Override
+	public List<Music> selectMusicByTitle() {
+		// TODO Auto-generated method stub
+		return musicDAO.selectMusicByTitle();
+	}
+
 }
