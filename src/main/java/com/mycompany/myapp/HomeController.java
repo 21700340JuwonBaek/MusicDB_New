@@ -97,9 +97,10 @@ public class HomeController {
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(@ModelAttribute("music") Music music, Model model, String url) {
-		url = url.replace("watch?v=", "embed/");
+    	String embed = "https://www.youtube.com/embed/";
+    	String Id = url.substring(url.length()-11);
+    	url = embed.concat(Id);
 		music.setUrl(url);
-		System.out.println(url);
 		musicService.insertMusic(music);
 		
 		model.addAttribute("list",musicService.selectMusic());
@@ -118,7 +119,9 @@ public class HomeController {
 	
     @RequestMapping(value="/editsave",method = RequestMethod.POST)    
     public String editsave(@ModelAttribute("music") Music music, String url){   
-		url = url.replace("watch?v=", "embed/");
+    	String embed = "https://www.youtube.com/embed/";
+    	String Id = url.substring(url.length()-11);
+    	url = embed.concat(Id);
 		music.setUrl(url);
     	musicService.updateMusic(music);
     	return "redirect:/successed";    
@@ -132,5 +135,33 @@ public class HomeController {
     	return "redirect:/successed";    
     }    
 	
+    @RequestMapping(value="/artistOrder")    
+    public String artistOrder(Model model,HttpSession session){   
+		try {
+		String result = (String)session.getAttribute("isLogined");
+		String result2 = (String)session.getAttribute("Master");
+		if(result == null && result2 == null)throw new Exception();
+		System.out.println("success메소드 실행 성공");
+		model.addAttribute("list",musicService.selectMusicByArtist());
+		return "view";}
+		catch(Exception e) {
+			return "failed";
+		}
+    }    
+    
+    @RequestMapping(value="/titleOrder")    
+    public String titleOrder(Model model,HttpSession session){   
+		try {
+		String result = (String)session.getAttribute("isLogined");
+		String result2 = (String)session.getAttribute("Master");
+		if(result == null && result2 == null)throw new Exception();
+		System.out.println("success메소드 실행 성공");
+		model.addAttribute("list",musicService.selectMusicByTitle());
+		return "view";}
+		catch(Exception e) {
+			return "failed";
+		}
 	
+}
+    
 }
