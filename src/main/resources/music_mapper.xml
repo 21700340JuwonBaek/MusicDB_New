@@ -5,8 +5,17 @@
   
 <mapper namespace="music">
     <select id="Select" parameterType="string" resultType="MusicVO">
-        SELECT * FROM music 
+        SELECT * FROM music ORDER BY regdate
     </select>
+    
+        <select id="SelectArtist" parameterType="string" resultType="MusicVO">
+        SELECT * FROM music ORDER BY artist
+    </select>
+    
+        <select id="SelectTitle" parameterType="string" resultType="MusicVO">
+        SELECT * FROM music ORDER BY title
+    </select>
+    
     
         <select id="SelectById" parameterType="int" resultType="MusicVO">
    		SELECT * FROM music where id=#{id} 
