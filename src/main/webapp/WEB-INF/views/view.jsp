@@ -57,12 +57,12 @@ margin-bottom:85px;
 
 
 </style>
+
 </head>
 <body>
 <%! int count = 1;
 List<String> Id = new ArrayList<String>();%>
 <h1 style="text-align:center">플레이리스트</h1>
-
 
 
 <div style="width:350; height:200;" id="mv" style="display: inline-block"></div>
@@ -94,12 +94,17 @@ p.setShuffle(true);
 
 
 
-<button style="float:right; font-size : 60px; padding:5px" onclick="location.href='/myapp/add'" class="btn btn-light" >
+<!-- <button style="float:right; font-size : 60px; padding:5px" onclick="location.href='/myapp/add'" class="btn btn-light" >
+<i class="fa fa-plus-square-o" aria-hidden="true" ></i>
+</button> -->
+
+<button style="float:right; font-size : 60px; padding:5px" onclick="location.href='/add'" class="btn btn-light" >
 <i class="fa fa-plus-square-o" aria-hidden="true" ></i>
 </button>
 
 <table class="table">
-<thead class="thead-light"><tr><th>No.</th><th>아티스트</th><th>제목</th>
+<thead class="thead-light"><tr><th><a href="successed">No<br>(등록순 정렬)</a></th><th><a href="artistOrder">아티스트</a></th>
+<th><a href="titleOrder">제목</a></th>
 <th>동영상(저작권문제로 유튜브로 이동하셔서 보셔야합니다!)</th><th>수정</th><th>삭제</th></tr></thead>
 <c:forEach var="music" items="${list }">
 <c:set var="curr" value="${music.url }"/>
@@ -109,32 +114,45 @@ p.setShuffle(true);
 <td width=20%><p>${music.title}</p></td>
 <td >
 <iframe id='Music<%=count%>' width="350" height="200"
-src="${music.url}" allowfullscreen onStateChange="">
+src="${music.url}" allowfullscreen >
 </iframe>
 </td>
 <td><p><a href="editmusic/${music.id}">Edit</a></p></td>
 <td><p>
-<a href="#" onclick="checkRemove('${music.id}')">Delete</a></p></td>
+<a href="#" onclick="Remove('${music.id}')">Delete</a></p></td>
 </tr>
 <%count++; %>
 </c:forEach>
 
 </table>
-<%count=1;
-out.print(Id);
-pageContext.setAttribute("Id",Id);
-%>
+<%count=1;%>
 
   <script>
 /*   <a href="deletemusic/${music.id}">Delete</a>
- */      function checkRemove(id){
+ */
+ var doubleSortingFlag = false;
+ var doubleSubmitFlag = false;
+
+
+ 		function checkRemove(id){
 			var result = confirm("정말로 삭제하시겠습니까?");
 			if(result){
 				document.location.href="deletemusic/"+id;
+				doubleSubmitFlag = true;
 				}else{
 					
 				}
           }
+
+ 		 function Remove(id){
+ 		     if(doubleSubmitFlag){ 
+ 		         alert("잠시만 기다려주세요~");
+ 		         return;}
+
+ 		     checkRemove(id);
+ 		     
+
+ 		 }
     </script>
 </body>
 
