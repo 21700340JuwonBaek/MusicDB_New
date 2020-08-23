@@ -54,6 +54,14 @@ margin-bottom:85px;
  }
 
 
+#add{
+position: absolute;
+font-size : 60px;
+padding:5px;
+left:100%;
+ transform:translate(-100%,178%)
+
+}
 
 
 </style>
@@ -64,8 +72,8 @@ margin-bottom:85px;
 List<String> Id = new ArrayList<String>();%>
 <h1 style="text-align:center">플레이리스트</h1>
 
-
-<div style="width:350; height:200;" id="mv" style="display: inline-block"></div>
+<div>
+<div style="width:350; height:200;" id="mv" ></div>
 <c:forEach var="music" items="${list }">
 <c:set var="curr" value="${music.url }"/>
 <%String curURL = (String)pageContext.getAttribute("curr");
@@ -98,9 +106,10 @@ p.setShuffle(true);
 <i class="fa fa-plus-square-o" aria-hidden="true" ></i>
 </button> -->
 
-<button style="float:right; font-size : 60px; padding:5px" onclick="location.href='/add'" class="btn btn-light" >
+<button onclick="location.href='/add'" class="btn btn-light" id="add">
 <i class="fa fa-plus-square-o" aria-hidden="true" ></i>
 </button>
+</div>
 
 <table class="table">
 <thead class="thead-light"><tr><th><a href="successed">No<br>(등록순 정렬)</a></th><th><a href="artistOrder">아티스트</a></th>

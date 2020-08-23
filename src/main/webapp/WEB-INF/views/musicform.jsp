@@ -75,7 +75,8 @@ function insert(){
 </script>
 <body>
 <h1 style="font-size:50px; margin-top: 0; margin-left:0">백주원의 음악 DB</h1>
-<form action="/myapp/save" method="post" name="addform">
+<!-- <form action="/myapp/save" method="post" name="addform"> -->
+<form action="/save" method="post" name="addform">
 <div class="wrapper">
 <div>아티스트 </div><p style="display:inline-block"> <input type="text" name="artist"> </p><br>
 <div>제목 </div><p style="display:inline-block"> <input type="text" name="title"></p><br>
