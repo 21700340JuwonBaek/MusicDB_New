@@ -23,6 +23,10 @@
 <!-- 한글 -->
 
 <link href="<c:url value="/resources/css/font_bootstrap.css" />" rel="stylesheet">
+
+ 
+<!--  <link href="/resources/css/font_bootstrap.css" rel="stylesheet">
+ -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://www.youtube.com/iframe_api"></script>
     

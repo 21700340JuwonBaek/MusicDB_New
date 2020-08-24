@@ -56,5 +56,8 @@
     </jsp-property-group>
 </jsp-config>
 
-
+<session-config>
+  <!-- Disables URL-based sessions (no more 'jsessionid' in the URL using Tomcat) -->
+  <tracking-mode>COOKIE</tracking-mode>
+</session-config>
 </web-app>
